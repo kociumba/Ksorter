@@ -166,6 +166,9 @@ foreach ($file in $files) {
             if ($file.name -eq $currentScriptName) {
                 continue
             }
+            if ($file.name -eq "ktool.exe") {
+                continue
+            }
             $file | Move-Item -Destination "$directory/Code" -ErrorAction Stop
         }
 
