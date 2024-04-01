@@ -29,10 +29,10 @@ function Rename_jfif {
 
 
 # get the user consent and settings
-Write-Host "This script will move all the supported files in the current directory"
+echo "This script will move all the supported files in the current directory"
 $answer = Read-Host "Do you wish to proceed? (y/n)"
 if ($answer -ne "y") {
-    Write-Host "Exiting script." -ForegroundColor Red
+    echo "Exiting script." -ForegroundColor Red
     exit
 }
 
@@ -41,7 +41,7 @@ if ($rename_jfif -eq "y") {
     Rename_jfif
 }
 
-Write-Host "Creating all the folders" -ForegroundColor Green
+echo "Creating all the folders" -ForegroundColor Green
 
 
 # set up the needed data and create initaial folders
@@ -84,7 +84,7 @@ if (!(Test-Path "$directory/Text")) {
     mkdir "$directory/Text" > $null
 }
 
-Write-Host "Moving all the files" -ForegroundColor Green
+echo "Moving all the files" -ForegroundColor Green
 
 
 # move all found files by extension
@@ -166,9 +166,6 @@ foreach ($file in $files) {
             if ($file.name -eq $currentScriptName) {
                 continue
             }
-            if ($file.name -eq "ktool.exe") {
-                continue
-            }
             $file | Move-Item -Destination "$directory/Code" -ErrorAction Stop
         }
 
@@ -190,7 +187,7 @@ foreach ($file in $files) {
 }
 
 
-Write-Host "Cleaning up" -ForegroundColor Green
+echo "Cleaning up" -ForegroundColor Green
 
 
 # clean up any unused folders 
@@ -251,25 +248,25 @@ if ($Text.Length -eq 0) {
 
 
 # display simple stats and finalize the script
-Write-Host "Getting final stats" -ForegroundColor Green
+echo "Getting final stats" -ForegroundColor Green
 $files = Get-ChildItem -Path $directory -File -Recurse
 $totalSize = ($files | Measure-Object -Property Length -Sum).Sum
 $sortFolders = Get-ChildItem "$directory"
-Write-Host "Total size: " -NoNewline
+echo "Total size: " -NoNewline
 if ($totalSize / 1GB -lt 1) {
     $sizeFormatted = "{0:N2} MB" -f ($totalSize / 1MB)
 } else {
     $sizeFormatted = "{0:N2} GB" -f ($totalSize / 1GB)
 }
-Write-Host $sizeFormatted -ForegroundColor Cyan
-Write-Host "Total number of files: " -NoNewline
-Write-Host "$($files.Count - 1)" -ForegroundColor Cyan
-Write-Host "Total number of folders: " -NoNewline
-Write-Host "$($sortFolders.Count - 1)" -ForegroundColor Cyan
+echo $sizeFormatted -ForegroundColor Cyan
+echo "Total number of files: " -NoNewline
+echo "$($files.Count - 1)" -ForegroundColor Cyan
+echo "Total number of folders: " -NoNewline
+echo "$($sortFolders.Count - 1)" -ForegroundColor Cyan
 
-Write-Host "Task complete. Thank you for indulging my " -NoNewline 
-Write-Host "'schizo coding'." -ForegroundColor Magenta
-Write-Host ""
-Write-Host "Press Enter to close this window..." 
+echo "Task complete. Thank you for indulging my " -NoNewline 
+echo "'schizo coding'." -ForegroundColor Magenta
+echo ""
+echo "Press Enter to close this window..." 
 $null = Read-Host
-Write-Host "Goodbye!" -ForegroundColor Green
+echo "Goodbye!" -ForegroundColor Green
