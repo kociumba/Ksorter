@@ -1,7 +1,7 @@
 # <p align="center">Welcome to</p>
 
 <p align="center">
-    <img src="ksorter.svg" alt="Ksorter" title="ksorter logo">
+    <img src="Ksorter.svg" alt="Ksorter" title="ksorter logo">
 </p>
 
 # Overview
