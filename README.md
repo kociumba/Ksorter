@@ -15,6 +15,7 @@ Ktool is a part of my K suite of tools that so far includes:
 - [Ktool](https://github.com/kociumba/ktool)
 - [Ksorter](https://github.com/kociumba/ksorter) - this repo
 - [Kinjector](https://github.com/kociumba/Kinjector)
+- [Kpixel](https://github.com/kociumba/kpixel)
 
 This script is integrated with [Ktool](https://github.com/kociumba)
 
